@@ -12,13 +12,16 @@ function subFib(
 		return;
 	}
 
-	console.log("0\t0");
+	const OS = require("os");
+	NL = OS.EOL;
+
+	process.stdout.write("0\t0" + NL);
 	if(num < 1)
 	{
 		return;
 	}
 
-	console.log("1\t1");
+	process.stdout.write("1\t1" + NL);
 	if(num < 2)
 	{
 		return;
@@ -29,7 +32,9 @@ function subFib(
 	let fib2 = BigInt(0);
 	let cnt = 1;
 
-	let $Buf = "";
+	const BufMax = 4 * 1000;
+	let Buf = [BufMax];
+	let BufIndex = 0;
 
 	while(num > cnt)
 	{
@@ -38,13 +43,20 @@ function subFib(
 		fib1 = fib2;
 		++cnt;
 
-		$Buf += cnt;
-		$Buf += "\t";
-		$Buf += fib1;
-		$Buf += "\n";
+		Buf[BufIndex + 0] = cnt;
+		Buf[BufIndex + 1] = "\t";
+		Buf[BufIndex + 2] = fib1;
+		Buf[BufIndex + 3] = NL;
+		BufIndex += 4;
+
+		if(BufIndex >= BufMax)
+		{
+			process.stdout.write(Buf.join(""));
+			BufIndex = 0;
+		}
 	}
 
-	process.stdout.write($Buf);
+	process.stdout.write(Buf.slice(0, BufIndex).join(""));
 }
 
 function main()

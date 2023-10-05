@@ -30,7 +30,9 @@ function subFib(
 	$fib2 = 0;
 	$cnt = 1;
 
-	$Buf = "";
+	$BufMax = 4 * 1000;
+	$Buf = [$BufMax];
+	$BufIndex = 0;
 
 	while($num > $cnt)
 	{
@@ -39,13 +41,20 @@ function subFib(
 		$fib1 = $fib2;
 		++$cnt;
 
-		$Buf .= $cnt;
-		$Buf .= "\t";
-		$Buf .= gmp_strval($fib1);
-		$Buf .= PHP_EOL;
+		$Buf[$BufIndex + 0] = $cnt;
+		$Buf[$BufIndex + 1] = "\t";
+		$Buf[$BufIndex + 2] = gmp_strval($fib1);
+		$Buf[$BufIndex + 3] = PHP_EOL;
+		$BufIndex += 4;
+
+		if($BufIndex >= $BufMax)
+		{
+			echo implode("", $Buf);
+			$BufIndex = 0;
+		}
 	}
 
-	echo $Buf;
+	echo implode("", array_slice($Buf, 0, $BufIndex));
 }
 
 function main()

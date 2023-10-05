@@ -1,9 +1,10 @@
-﻿//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // BigNum
-// $ csc.exe -o+ -w:4 -r:System.Numerics.dll -out:fib.cs.exe fib.cs
+// $ csc -o+ -w:4 -r:System.Numerics.dll -out:fib.cs.exe fib.cs
 // $ fib.cs.exe [NUM]
 //------------------------------------------------------------------------------
 using System;
+using System.IO;
 using System.Numerics;
 using System.Text;
 
@@ -11,57 +12,59 @@ namespace Program
 {
 	internal class Sub
 	{
-		static void SubFib(
-			int num = 0
-		)
+		private static void SubFib(int iNum = 0)
 		{
-			if(num < 0)
+			if (iNum < 0)
 			{
 				return;
 			}
 
 			Console.WriteLine("0\t0");
-			if(num < 1)
+			if (iNum < 1)
 			{
 				return;
 			}
 
 			Console.WriteLine("1\t1");
-			if(num < 2)
+			if (iNum < 2)
 			{
 				return;
 			}
 
 			BigInteger fib0 = 0;
 			BigInteger fib1 = 1;
-			int cnt = 1;
+			BigInteger fib2 = 0;
+			int iCnt = 1;
 
-			StringBuilder SB = new StringBuilder();
+			StreamWriter SW = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
+			Console.SetOut(SW);
+			StringBuilder Buf = new StringBuilder(10_000_000);
 
-			while(num > cnt)
+			while (iNum > iCnt)
 			{
-				BigInteger fib2 = fib1 + fib0;
+				fib2 = fib1 + fib0;
 				fib0 = fib1;
 				fib1 = fib2;
-				++cnt;
+				++iCnt;
 
-				SB.Append(cnt.ToString());
-				SB.Append("\t");
-				SB.Append(fib1.ToString());
-				SB.Append(Environment.NewLine);
+				_ = Buf.Append(iCnt.ToString());
+				_ = Buf.Append("\t");
+				_ = Buf.Append(fib1.ToString());
+				_ = Buf.Append(Environment.NewLine);
 			}
 
-			Console.Write(SB);
+			Console.Write(Buf.ToString());
+			Console.Out.Flush();
 		}
 
-		static void Main(string[] ARGS)
+		private static void Main(string[] ARGS)
 		{
-			int num = 0;
-			if(ARGS.Length > 0)
+			int iNum = 0;
+			if (ARGS.Length > 0)
 			{
-				int.TryParse(ARGS[0], out num);
+				int.TryParse(ARGS[0], out iNum);
 			}
-			SubFib(num);
+			SubFib(iNum);
 		}
 	}
 }

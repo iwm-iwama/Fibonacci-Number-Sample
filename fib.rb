@@ -25,7 +25,9 @@ def subFib(
 	fib2 = 0
 	cnt = 1
 
-	$Buf = ""
+	$BufMax = 4 * 1000
+	$Buf = [$BufMax]
+	$BufIndex = 0
 
 	while num > cnt
 		fib2 = fib1 + fib0
@@ -33,13 +35,19 @@ def subFib(
 		fib1 = fib2
 		cnt += 1
 
-		$Buf << cnt.to_s
-		$Buf << "\t"
-		$Buf << fib1.to_s
-		$Buf << "\n"
+		$Buf[$BufIndex + 0] = cnt.to_s
+		$Buf[$BufIndex + 1] = "\t"
+		$Buf[$BufIndex + 2] = fib1.to_s
+		$Buf[$BufIndex + 3] = "\n"
+		$BufIndex += 4
+
+		if($BufIndex >= $BufMax)
+			print $Buf.join("")
+			$BufIndex = 0
+		end
 	end
 
-	print $Buf
+	print $Buf.slice(0..($BufIndex - 1)).join("")
 end
 
 def main()
