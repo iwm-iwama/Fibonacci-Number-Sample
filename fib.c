@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // BigNum
-// $ gcc -O3 -Wall -o fib.c.exe fib.c -lgmp & strip fib.c.exe
+// $ gcc -O0 -Wall -o fib.c.exe fib.c -lgmp & strip fib.c.exe
 // $ fib.c.exe [NUM]
 //------------------------------------------------------------------------------
 #include <gmp.h>
@@ -58,7 +58,7 @@ subFib(
 
 		BufEnd += gmp_sprintf((Buf + BufEnd), "%ld\t%Zd\n", iCnt, fib1);
 
-		if(BufEnd >= (int)BufMax)
+		if(BufEnd >= BufMax)
 		{
 			///printf("[%ld] Buf=%ld\tLen=%ld\tDiff=%ld\n", iCnt, (BufDmz + BufMax), strlen(Buf), (BufDmz + BufMax) - strlen(Buf));
 			fputs(Buf, stdout);
@@ -87,7 +87,7 @@ main(
 	int iNum = 0;
 	if(ARGC > 1)
 	{
-		iNum = atoll(ARGV[1]);
+		iNum = atoi(ARGV[1]);
 	}
 	subFib(iNum);
 	return 0;
