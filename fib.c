@@ -4,10 +4,8 @@
 // $ fib.c.exe [NUM]
 //------------------------------------------------------------------------------
 #include <gmp.h>
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 void
 subFib(
@@ -60,7 +58,6 @@ subFib(
 
 		if(BufEnd >= BufMax)
 		{
-			///printf("[%ld] Buf=%ld\tLen=%ld\tDiff=%ld\n", iCnt, (BufDmz + BufMax), strlen(Buf), (BufDmz + BufMax) - strlen(Buf));
 			fputs(Buf, stdout);
 
 			size_t _i1 = iCnt + BufBase;
@@ -72,7 +69,6 @@ subFib(
 		}
 	}
 
-	///printf("[%ld] Buf=%ld\tLen=%ld\tDiff=%ld\n", iCnt, (BufDmz + BufMax), strlen(Buf), (BufDmz + BufMax) - strlen(Buf));
 	fputs(Buf, stdout);
 
 	free(Buf);
