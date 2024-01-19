@@ -1,7 +1,11 @@
 //------------------------------------------------------------------------------
 // BigNum
-// $ gcc -O0 -Wall -o fib.c.exe fib.c -lgmp & strip fib.c.exe
-// $ fib.c.exe [NUM]
+// <Windows>
+//   $ gcc -Os -Wall fib.c -static -lgmp -o fib.c.exe & strip fib.c.exe
+//   $ fib.c.exe [NUM]
+// <Linux>
+//   $ gcc -Os -Wall ./fib.c -static -lgmp -o ./fib.c.bin ; strip ./fib.c.bin
+//   $ ./fib.c.bin [NUM]
 //------------------------------------------------------------------------------
 #include <gmp.h>
 #include <stdio.h>

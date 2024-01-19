@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!ruby
 #---------------------------------------------------------------------
 # BigNum
 # $ ruby fib.rb [NUM]
@@ -25,7 +25,7 @@ def subFib(
 	fib2 = 0
 	cnt = 1
 
-	$BufMax = 4 * 1000
+	$BufMax = 4 * 4096
 	$Buf = [$BufMax]
 	$BufIndex = 0
 
