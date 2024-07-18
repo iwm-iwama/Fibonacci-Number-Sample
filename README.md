@@ -4,7 +4,6 @@
 Sources
 
     C  : .c
-    C# : .cs
 
 
 Binary
@@ -14,7 +13,5 @@ Binary
 
 Scripts
 
-    JavaScript(node 18) : .js
-    PHP(8.2)            : .php
-    Python(3.11)        : .py
-    Ruby(3.2)           : .rb
+    JavaScript : .js
+    Ruby       : .rb
