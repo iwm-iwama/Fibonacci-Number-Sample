@@ -3,7 +3,7 @@
 
 Sources
 
-    C  : .c
+    C : .c
 
 
 Binary
