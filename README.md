@@ -3,7 +3,8 @@
 
 Sources
 
-    C : .c
+    C  : .c
+    C# : .cs
 
 
 Binary
@@ -14,4 +15,6 @@ Binary
 Scripts
 
     JavaScript : .js
+    PHP        : .php
+    Python     : .py
     Ruby       : .rb
