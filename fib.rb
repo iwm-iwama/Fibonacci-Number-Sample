@@ -1,4 +1,4 @@
-#!ruby
+#!/usr/bin/env ruby
 #---------------------------------------------------------------------
 # BigNum
 # $ ruby fib.rb [NUM]
@@ -25,23 +25,24 @@ def subFib(
 	fib2 = 0
 	cnt = 1
 
-	$BufMax = 4 * 4096
+	$BufMax = 1000 * 4
 	$Buf = [$BufMax]
 	$BufIndex = 0
 
 	while num > cnt
+		cnt += 1
+
 		fib2 = fib1 + fib0
 		fib0 = fib1
 		fib1 = fib2
-		cnt += 1
 
-		$Buf[$BufIndex + 0] = cnt.to_s
+		$Buf[$BufIndex + 0] = cnt
 		$Buf[$BufIndex + 1] = "\t"
-		$Buf[$BufIndex + 2] = fib1.to_s
+		$Buf[$BufIndex + 2] = fib1
 		$Buf[$BufIndex + 3] = "\n"
 		$BufIndex += 4
 
-		if($BufIndex >= $BufMax)
+		if $BufIndex >= $BufMax
 			print $Buf.join("")
 			$BufIndex = 0
 		end

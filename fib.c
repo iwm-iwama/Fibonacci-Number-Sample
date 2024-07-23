@@ -1,10 +1,10 @@
 //------------------------------------------------------------------------------
 // BigNum
 // <Windows>
-//   $ gcc -Os -Wall fib.c -static -lgmp -o fib.c.exe & strip fib.c.exe
+//   $ gcc -O3 -Wall fib.c -static -lgmp -o fib.c.exe & strip fib.c.exe
 //   $ fib.c.exe [NUM]
 // <Linux>
-//   $ gcc -Os -Wall ./fib.c -static -lgmp -o ./fib.c.bin ; strip ./fib.c.bin
+//   $ gcc -O3 -Wall ./fib.c -static -lgmp -o ./fib.c.bin ; strip ./fib.c.bin
 //   $ ./fib.c.bin [NUM]
 //------------------------------------------------------------------------------
 #include <gmp.h>
@@ -13,22 +13,22 @@
 
 void
 subFib(
-	int iNum
+	int num
 )
 {
-	if(iNum < 0)
+	if(num < 0)
 	{
 		return;
 	}
 
 	puts("0\t0");
-	if(iNum < 1)
+	if(num < 1)
 	{
 		return;
 	}
 
 	puts("1\t1");
-	if(iNum < 2)
+	if(num < 2)
 	{
 		return;
 	}
@@ -51,14 +51,14 @@ subFib(
 	char *Buf = calloc((BufDmz + BufMax), sizeof(char));
 	size_t BufEnd = 0;
 
-	while(iNum > iCnt)
+	while(num > iCnt)
 	{
 		mpz_add(fib2, fib1, fib0);
 		mpz_set(fib0, fib1);
 		mpz_set(fib1, fib2);
 		++iCnt;
 
-		BufEnd += gmp_sprintf((Buf + BufEnd), "%ld\t%Zd\n", iCnt, fib1);
+		BufEnd += gmp_sprintf((Buf + BufEnd), "%zu\t%Zd\n", iCnt, fib1);
 
 		if(BufEnd >= BufMax)
 		{
@@ -84,11 +84,11 @@ main(
 	char* ARGV[]
 )
 {
-	int iNum = 0;
+	int num = 0;
 	if(ARGC > 1)
 	{
-		iNum = atoi(ARGV[1]);
+		num = atoi(ARGV[1]);
 	}
-	subFib(iNum);
+	subFib(num);
 	return 0;
 }
