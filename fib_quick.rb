@@ -59,7 +59,7 @@ class Fibonacci
 				puts "1\t1"
 				return
 			when 2
-				puts("2\t1")
+				puts "2\t1"
 				return
 		end
 
@@ -70,21 +70,21 @@ class Fibonacci
 	end
 end
 
-Fib = Fibonacci .new()
+Fib = Fibonacci.new()
 
 def main()
-	iNum = 0
+	num = 0
 	if ARGV.length > 0
-		iNum = ARGV[0].to_i
+		num = ARGV[0].to_i
 	end
 
-	# Normal: [iNum]
-	Fib.output(iNum)
+	# Normal: [num]
+	Fib.output(num)
 
-	# Debug: [0..iNum]
+	# Debug: [0..num]
 =begin
-		iNum += 1
-		iNum.times do |_i1|
+		num += 1
+		num.times do |_i1|
 			Fib.output(_i1)
 		end
 =end

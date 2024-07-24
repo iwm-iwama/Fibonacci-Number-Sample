@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #---------------------------------------------------------------------
-# BigNum
-# $ python fib.py [NUM]
+# BigNum／最大4300行
+# $ python3 fib.py [NUM]
 #---------------------------------------------------------------------
 import sys
 
@@ -50,7 +50,7 @@ def subFib(
 
 def main():
 	num = 0
-	if len(Args[1]) > 0:
+	if len(Args) > 1:
 		num = int(Args[1])
 	subFib(num)
 

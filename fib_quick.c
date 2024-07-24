@@ -23,7 +23,7 @@ void fib_mul(
 	{
 		for(int _i2 = 0; _i2 < N; _i2++)
 		{
-			mpz_set_si(matResult[_i1][_i2], 0);
+			mpz_init(matResult[_i1][_i2]);
 		}
 	}
 
@@ -68,7 +68,7 @@ void fib_pow(
 		{
 			for(int _i2 = 0; _i2 < N; _i2++)
 			{
-				mpz_init_set_si(fib_tmp[_i1][_i2], 0);
+				mpz_init(fib_tmp[_i1][_i2]);
 			}
 		}
 
@@ -129,7 +129,7 @@ void fib_output(
 				mpz_init_set_si(mat1[_i1][_i2], 1);
 			}
 		}
-		mpz_init_set_si(mat1[1][1], 0);
+		mpz_init(mat1[1][1]);
 
 		fib_pow(matResult, mat1, num);
 		gmp_printf("%zu\t%Zd\n", num, matResult[0][1]);
