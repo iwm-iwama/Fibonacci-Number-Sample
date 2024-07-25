@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #---------------------------------------------------------------------
-# BigNum／最大4300文字
+# BigNum
 # $ python3 fib.py [NUM]
 #---------------------------------------------------------------------
 import sys
@@ -29,6 +29,9 @@ def subFib(
 	BUF_MAX = 4 * 1000
 	buf = [""] * BUF_MAX
 	bufIndex = 0
+
+	# 4300文字縛り解除
+	sys.set_int_max_str_digits(0)
 
 	while num > cnt:
 		fib2 = fib1 + fib0

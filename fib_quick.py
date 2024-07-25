@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #coding	utf-8
 #-------------------------------------------------------------------------------
-# BigNum／最大4300文字
+# BigNum
 # $ python3 fib_quick.py [NUM]
 #-------------------------------------------------------------------------------
 import sys
@@ -46,6 +46,8 @@ class Fib:
 		mat1 = [[1, 1], [1, 0]]
 		mat2 = Fib.pow(mat1, num)
 
+		# 4300文字縛り解除
+		sys.set_int_max_str_digits(0)
 		print(str(num), "\t", str(mat2[0][1]), end="\n", sep="")
 
 def main():
