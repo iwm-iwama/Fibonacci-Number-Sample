@@ -1,8 +1,11 @@
-#!node
+#!/usr/bin/env node
 //---------------------------------------------------------------------
 // BigNum
 // $ node fib.js [NUM]
 //---------------------------------------------------------------------
+const OS = require("os");
+NL = OS.EOL;
+
 function subFib(
 	num
 )
@@ -11,9 +14,6 @@ function subFib(
 	{
 		return;
 	}
-
-	const OS = require("os");
-	NL = OS.EOL;
 
 	process.stdout.write("0\t0" + NL);
 	if(num < 1)
@@ -32,16 +32,17 @@ function subFib(
 	let fib2 = BigInt(0);
 	let cnt = 1;
 
-	const BufMax = 4 * 1000;
+	const BufMax = 1000 * 4;
 	let Buf = [BufMax];
 	let BufIndex = 0;
 
 	while(num > cnt)
 	{
+		++cnt;
+
 		fib2 = fib1 + fib0;
 		fib0 = fib1;
 		fib1 = fib2;
-		++cnt;
 
 		Buf[BufIndex + 0] = cnt;
 		Buf[BufIndex + 1] = "\t";

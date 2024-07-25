@@ -26,11 +26,11 @@ def subFib(
 	fib2 = 0
 	cnt = 1
 
-	BUF_MAX = 4 * 1000
+	BUF_MAX = 1000 * 4
 	buf = [""] * BUF_MAX
 	bufIndex = 0
 
-	# 4300文字縛り解除
+	# 4300文字制限解除
 	sys.set_int_max_str_digits(0)
 
 	while num > cnt:
