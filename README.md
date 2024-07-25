@@ -15,6 +15,5 @@ Binary
 Scripts
 
     JavaScript : .js
-    PHP        : .php
     Python     : .py
     Ruby       : .rb
