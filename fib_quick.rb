@@ -7,21 +7,38 @@
 #【参考】require "matrix" を使用した例
 #-------------------------------------------------------------------------------
 =begin
-	require "matrix"
-	def subFib(
-		num = 0
+
+def subFib(
+	num
+)
+	print(
+		num,
+		"\t",
+		(Matrix[[1, 1], [1, 0]] ** num)[0, 1],
+		"\n"
 	)
-		print(num, "\t", ((Matrix[[1, 1], [1, 0]] ** num)[0, 1]), "\n")
+end
+
+def main()
+	num = 0
+	if ARGV.length > 0
+		num = ARGV[0].to_i
 	end
 	subFib(num)
+end
+
+main()
+
 =end
-#-------------------------------------------------------------------------------
 
 class Fibonacci
 	def initialize()
 	end
 
-	def mul(mat1, mat2)
+	def mul(
+		mat1,
+		mat2
+	)
 		rtn = [[0, 0], [0, 0]]
 		2.times do |_i1|
 			2.times do |_i2|
@@ -33,12 +50,15 @@ class Fibonacci
 		return rtn
 	end
 
-	def pow(mat1, num)
+	def pow(
+		mat1,
+		num
+	)
 		if num < 2
 			return mat1
 		end
 
-		if (num % 2) == 0
+		if num.even?
 			mat2 = pow(mat1, (num / 2).to_i)
 			return mul(mat2, mat2)
 		else
@@ -48,12 +68,11 @@ class Fibonacci
 		end
 	end
 
-	def output(num)
+	def output(
+		num
+	)
 		case num
-			when .. -1
-				return
-			when 0
-				puts "0\t0"
+			when .. 0
 				return
 			when 1
 				puts "1\t1"
@@ -66,7 +85,12 @@ class Fibonacci
 		mat1 = [[1, 1], [1, 0]]
 		mat2 = pow(mat1, num)
 
-		print(num, "\t", mat2[0][1], "\n")
+		print(
+			num,
+			"\t",
+			mat2[0][1],
+			"\n"
+		)
 	end
 end
 
@@ -77,18 +101,7 @@ def main()
 	if ARGV.length > 0
 		num = ARGV[0].to_i
 	end
-
-	# Normal: [num]
 	Fib.output(num)
-
-	# Debug: [0..num]
-=begin
-		num += 1
-		num.times do |_i1|
-			Fib.output(_i1)
-		end
-=end
-
 end
 
 main()
