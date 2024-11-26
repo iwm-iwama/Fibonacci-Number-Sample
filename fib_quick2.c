@@ -1,10 +1,10 @@
 //------------------------------------------------------------------------------
 // BigNum
 // <Windows>
-//   $ gcc -O3 -Wall fib_quick2.c -static -lgmp -lm -o fib_quick2.c.exe & strip fib_quick2.c.exe
+//   $ gcc -O3 -Wall fib_quick2.c -static -lgmp -o fib_quick2.c.exe & strip fib_quick2.c.exe
 //   $ fib_quick2.c.exe [NUM]
 // <Linux>
-//   $ gcc -O3 -Wall ./fib_quick2.c -static -lgmp -lm -o ./fib_quick2.c.bin ; strip ./fib_quick2.c.bin
+//   $ gcc -O3 -Wall ./fib_quick2.c -static -lgmp -o ./fib_quick2.c.bin ; strip ./fib_quick2.c.bin
 //   $ ./fib_quick2.c.bin [NUM]
 //
 // 以下のサイトを参考にした。
@@ -41,16 +41,16 @@ RtnFibIntr(
 
 	if(! (num % 2))
 	{
-		int num_half = (int)(num / 2);
-		$struct_ai _ai = RtnFibIntr(num_half);
+		int _numHalf = (int)ceil(num / 2);
+		int _iPm = (! (_numHalf & 1) ? 1 : -1);
+		$struct_ai _ai = RtnFibIntr(_numHalf);
 			mpz_set($f1, _ai.value[0]);
 			mpz_set($l1, _ai.value[1]);
-			int pow_m1 = pow(-1, num_half);
 			mpz_mul($l2, $l1, $l1);
-			mpz_init_set_si($l3, (2 * pow_m1));
+			mpz_init_set_si($l3, (2 * _iPm));
 			mpz_sub($l2, $l2, $l3);
 			mpz_mul($f2, $f1, $l1);
-			mpz_init_set_si($l3, pow_m1);
+			mpz_init_set_si($l3, _iPm);
 			mpz_sub($f2, $f2, $l3);
 		mpz_clear(_ai.value[0]);
 		mpz_clear(_ai.value[1]);

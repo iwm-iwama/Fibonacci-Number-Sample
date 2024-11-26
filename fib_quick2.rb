@@ -17,19 +17,19 @@ def RtnFibIntr(
 	end
 
 	if num.even?
-		num_half = num / 2
-		f1, l1 = RtnFibIntr(num_half)
-		pow_m1 = (-1) ** num_half
-		l2 = (l1 * l1) - (2 * pow_m1)
-		f2 = (f1 * l1) - pow_m1
+		_numHalf = (num / 2).ceil
+		_iPm = (0 == (_numHalf & 1) ? 1 : -1);
+		f1, l1 = RtnFibIntr(_numHalf)
+			l2 = (l1 * l1) - (2 * _iPm)
+			f2 = (f1 * l1) - _iPm
 	elsif (num % 8) == 7
 		f1, l1 = RtnFibIntr(num + 1)
-		f2 = (2 * f1) - l1
-		l2 = (3 * f2) - f1
+			f2 = (2 * f1) - l1
+			l2 = (3 * f2) - f1
 	else
 		f1, l1 = RtnFibIntr(num - 1)
-		f2 = (3 * f1) - l1
-		l2 = (2 * f2) - f1
+			f2 = (3 * f1) - l1
+			l2 = (2 * f2) - f1
 	end
 
 	return [f2, l2]
