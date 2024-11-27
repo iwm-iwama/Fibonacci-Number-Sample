@@ -12,13 +12,13 @@
 def RtnFibIntr(
 	num
 )
-	if num.zero?
+	if num == 0
 		return [1, 2] 
 	end
 
-	if num.even?
-		_numHalf = (num / 2).ceil
-		_iPm = (0 == (_numHalf & 1) ? 1 : -1);
+	if (num & 1) == 0
+		_numHalf = (num / 2).to_i
+		_iPm = ((_numHalf & 1) == 0 ? 1 : -1);
 		f1, l1 = RtnFibIntr(_numHalf)
 			l2 = (l1 * l1) - (2 * _iPm)
 			f2 = (f1 * l1) - _iPm

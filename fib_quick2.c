@@ -39,9 +39,9 @@ RtnFibIntr(
 		return rtn;
 	}
 
-	if(! (num % 2))
+	if(! (num & 1))
 	{
-		int _numHalf = (int)ceil(num / 2);
+		int _numHalf = (int)(num / 2);
 		int _iPm = (! (_numHalf & 1) ? 1 : -1);
 		$struct_ai _ai = RtnFibIntr(_numHalf);
 			mpz_set($f1, _ai.value[0]);
